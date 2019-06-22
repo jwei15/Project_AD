@@ -16,6 +16,12 @@ char Context::curr() {
 	return _exp[_index];
 }
 
+char Context::peek() {
+	if (isEnd())
+		return '#';
+	return _exp[_index + 1];
+}
+
 char Context::next() {
 	if (isEnd())
 		return '#';

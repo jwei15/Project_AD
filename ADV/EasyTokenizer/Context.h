@@ -12,6 +12,7 @@ public:
 	State* currentState = nullptr;
 
 	char curr();
+	char peek();
 	char next();
 	bool isEnd();
 

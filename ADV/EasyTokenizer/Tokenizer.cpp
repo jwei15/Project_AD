@@ -44,7 +44,7 @@ void Tokenizer::showTokenizeResult() {
 
 //#ifdef TOKENIZER_H
 int main() {
-	Tokenizer test = Tokenizer("y = sin (25*x) + 12*x");
+	Tokenizer test = Tokenizer("y = sin (25*x) + 12*x + 2! - 14*(cos(15-x))");
 	test.Tokenize();
 	test.showTokenizeResult();
 	return 0;

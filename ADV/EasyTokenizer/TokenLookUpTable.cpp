@@ -31,7 +31,8 @@ TokenLookUpTable::TokenLookUpTable() {
 //	<------- If this token is a number ------->
 
 bool TokenLookUpTable::isNumeric(std::string token) {
-	return std::regex_match(token, std::regex("([1-9][0-9]*)(.*)([0-9]+)"));
+	//"([1-9][0-9]*)(?(?'.')([0-9]+)|([0-9]*))"
+	return std::regex_match(token, std::regex("^[1-9]{1}[0-9]*(\.[0-9]+)?$"));
 }
 
 //	<------- If this token is a vairable ------->
@@ -65,6 +66,7 @@ int main() {
 	TokenLookUpTable* ttlt = new TokenLookUpTable();
 	std::cout << ttlt->TypeOf("_thereisacow1337") << std::endl;
 	std::cout << ttlt->TypeOf("+") << std::endl;
+	std::cout << ttlt->isNumeric("2") << std::endl;
 	delete ttlt;
 	return 0;
 }

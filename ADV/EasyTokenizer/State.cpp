@@ -17,7 +17,7 @@ bool State::isSpace(char c) {
 
 bool State::isOtherRecognizable(char c) {
 	return c == '+' || c == '-' || c == '*' || c == '/' || c == '='
-		|| c == '(' || c == ')';
+		|| c == '(' || c == ')' || c == '!';
 }
 
 Token State_AlphaOrDigitOrUnderline::getNextToken() {
@@ -33,6 +33,8 @@ Token State_AlphaOrDigitOrUnderline::getNextToken() {
 }
 
 
+
+
 Token State_Space::getNextToken() {
 	std::cout << "\n======= In Space Mode\n";
 	Token token = "";
@@ -46,14 +48,17 @@ Token State_Space::getNextToken() {
 }
 
 
+//	<------- Currently we only think of the tokens with only one word ------->
+//	<------- Could be modified according to further requirements ------->
+
 Token State_OtherRecognizable::getNextToken() {
 	std::cout << "\n======= In Other Mode\n";
 	Token token = "";
 	char c = _context->curr();
-	while (isOtherRecognizable(c)) {
+	//while (isOtherRecognizable(c)) {
 		token += c;
 		c = _context->next();
-	}
+	//}
 	std::cout << "	Token is: " << token << "\n	Next is: " << c << std::endl << "\n";
 	return token;
 }
