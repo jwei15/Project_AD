@@ -18,3 +18,4 @@ enum TokenType {
 using Expression = std::string;
 using Token = std::string;
 using TokenTable = std::vector<std::pair<Token, TokenType>>;
+using TokenTableElement = std::pair<Token, TokenType>;

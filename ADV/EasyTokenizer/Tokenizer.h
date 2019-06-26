@@ -12,15 +12,20 @@
 //A tokenizer will deal with the entire expression
 class Tokenizer {
 public:
+	Tokenizer();
 	Tokenizer(Expression exp);
 
 	Token getNextToken();
 
+	void setContext(Expression exp);
 	void Tokenize();
 
 	bool isEnd();
 
 	void showTokenizeResult();
+
+
+	TokenTable getTokenTable();
 private:
 	Context* _context;
 	TokenLookUpTable tlut;

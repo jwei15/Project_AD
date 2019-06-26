@@ -16,7 +16,6 @@ public:
 	TokenType TypeOf(std::string token);
 
 private:
-	std::map<std::string, TokenType> opt_lookup_table;
-	
+	std::map<std::string, TokenType> opt_lookup_table;	
 };
 

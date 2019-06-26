@@ -6,9 +6,9 @@ void State::setContext(Context* context) {
 }
 
 bool State::isAlphaOrDigitOrUnderline(char c) {
-	return ('0' <= c && '9' >= c) ||
+	return ('0' <= c && '9' >= c) || c == '.' ||
 		('a' <= c && 'z' >= c) || ('A' <= c && 'Z' >= c) ||
-		(c == '_');
+		(c == '_') ;
 };
 
 bool State::isSpace(char c) {
@@ -17,7 +17,7 @@ bool State::isSpace(char c) {
 
 bool State::isOtherRecognizable(char c) {
 	return c == '+' || c == '-' || c == '*' || c == '/' || c == '='
-		|| c == '(' || c == ')' || c == '!';
+		|| c == '(' || c == ')' || c == '!' ;
 }
 
 Token State_AlphaOrDigitOrUnderline::getNextToken() {

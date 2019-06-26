@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../EasyTokenizer/TokenLookUpTable.h"
 #include "../EasyTokenizer/Prerequisite.h"
 
 class Node {
@@ -7,8 +8,8 @@ public:
 	Node();
 	~Node();
 
-	TokenType type;
-	
+private:
+	TokenTableElement* _tte;
 	Node* left = nullptr;
 	Node* right = nullptr;
 };
@@ -22,7 +23,3 @@ public:
 private:
 	Node* _root;
 };
-
-float Tree::eval(Node root, float x) {
-	if (TokenType != )
-}
