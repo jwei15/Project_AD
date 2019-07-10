@@ -17,7 +17,7 @@ bool State::isSpace(char c) {
 
 bool State::isOtherRecognizable(char c) {
 	return c == '+' || c == '-' || c == '*' || c == '/' || c == '='
-		|| c == '(' || c == ')' || c == '!' ;
+		|| c == '(' || c == ')' || c == '!' || c == '@' || c == '~';
 }
 
 Token State_AlphaOrDigitOrUnderline::getNextToken() {

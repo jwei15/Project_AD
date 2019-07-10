@@ -24,6 +24,4 @@ private:
 	Expression _exp;
 	int _index;	//To record which position we are in
 	std::queue<char> char_Q;
-
-
 };

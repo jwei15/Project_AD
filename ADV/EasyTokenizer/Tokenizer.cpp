@@ -48,9 +48,31 @@ void Tokenizer::Tokenize() {
 			token_table.push_back(std::make_pair(tk, tlut.TypeOf(tk)));
 		}
 	}
+	RegularizeTokenTable();
+}
+
+void Tokenizer::RegularizeTokenTable() {
+	TokenTableElement* last = nullptr;
+	for (TokenTable::iterator it = token_table.begin();
+		it != token_table.end(); ++it) {
+		if ( it->first == "+" ) {
+			if (!last || last->first == "(") {
+				it->first = "@";
+				it->second = LeftUniOpt;
+			}
+		}
+		else if (it->first == "-") {
+			if (!last || last->first == "(") {
+				it->first = "~";
+				it->second = LeftUniOpt;
+			}
+		}
+		last = &(*it);
+	}
 }
 
 void Tokenizer::showTokenizeResult() {
+	std::cout << "Tokenizer Result: ";
 	for (TokenTable::iterator it = token_table.begin(); it != token_table.end(); ++it)
 		std::cout << it->first << " ";
 	std::cout << std::endl;

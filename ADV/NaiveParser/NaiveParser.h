@@ -28,6 +28,8 @@ public:
 
 	void showSuffix();
 	bool ValidityIsGood();
+
+	TokenTable get_suffix() { return _suffix;};
 private:
 	TokenTable _inffix;
 	TokenTable _suffix;

@@ -157,8 +157,14 @@
     <ClInclude Include="Executive.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalculationTree\CalculationTree.vcxproj">
+      <Project>{63fff442-585c-426d-9a10-669af03dcf0c}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\EasyTokenizer\EasyTokenizer.vcxproj">
       <Project>{42bef938-2aab-4d0d-8846-d6043cd371c4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\NaiveParser\NaiveParser.vcxproj">
+      <Project>{0b9acbb0-2a3e-4f39-9b21-829664932360}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
