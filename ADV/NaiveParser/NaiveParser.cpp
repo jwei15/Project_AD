@@ -20,6 +20,10 @@ void NaiveParser::Next() {
 		CurrentContent = _inffix[ValidityHelperIndex].first;
 		CurrentType = _inffix[ValidityHelperIndex].second;
 	}
+	else {
+		CurrentContent = "#";
+		CurrentType = Invalid;
+	}
 }
 
 
@@ -91,13 +95,14 @@ void NaiveParser::F() {
 }
 
 
-//Please do not touch this, a naive parser is a fragile parser
+//Please do not touch this, a naive parser is also a fragile parser
 
 void NaiveParser::inffToSuffix() {
 	std::stack<TokenTableElement> optrS;
 	for (int i = 0; i < _inffix.size(); ++i) {
 		TokenTableElement tte = _inffix[i];
-		std::cout << "Dealing with " << tte.first << std::endl;
+		std::cout << "Dealing with " << tte.first<<std::endl;
+		//std::cout<<" OptrS size: "<< optrS.size() << std::endl;
 		//Left Unary Opt should go directly to optrS
 		if (tte.second == LeftUniOpt) {
 			optrS.push(tte);
@@ -116,7 +121,7 @@ void NaiveParser::inffToSuffix() {
 			while (!optrS.empty() && peek.second == LeftUniOpt) {	//trust me, no RightUniOpt goes to optrS
 				_suffix.push_back(peek);
 				optrS.pop();
-				peek = optrS.top();
+				if (!optrS.empty()) peek = optrS.top();
 			}
 			continue;
 		}
@@ -181,7 +186,7 @@ Priority NaiveParser::PriorityOf(Token opt) {
 	return 0;
 }
 
-//#ifdef NAIVEPARSER_H
+#ifdef NAIVEPARSER_H
 int main()
 {
 	//atof hates "+ 1.0"
@@ -189,7 +194,8 @@ int main()
 	Tokenizer toker;
 	NaiveParser np;
 
-	toker.setContext("1.5 + x*5 - 2");
+	//toker.setContext("(sin(12))!+ ");
+	toker.setContext("12*(-x) + sin((5*x) - 132)");
 	//toker.setContext("2*(x+2)+x");
 	toker.Tokenize();
 	np.setExpression(toker.getTokenTable());
@@ -199,5 +205,5 @@ int main()
 	std::cout << "Parser Result: " << np.ValidityIsGood()<<std::endl;
 }
 
-//#endif
+#endif
 

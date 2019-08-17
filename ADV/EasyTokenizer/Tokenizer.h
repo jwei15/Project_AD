@@ -22,6 +22,7 @@ public:
 
 	bool isEnd();
 
+	void RegularizeTokenTable();
 	void showTokenizeResult();
 
 

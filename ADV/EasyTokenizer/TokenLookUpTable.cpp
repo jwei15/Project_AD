@@ -32,7 +32,7 @@ TokenLookUpTable::TokenLookUpTable() {
 
 bool TokenLookUpTable::isNumeric(std::string token) {
 	//"([1-9][0-9]*)(?(?'.')([0-9]+)|([0-9]*))"
-	return std::regex_match(token, std::regex("^[1-9]{1}[0-9]*(\.[0-9]+)?$"));
+	return std::regex_match(token, std::regex("^([0])|([1-9]{1}[0-9]*(\.[0-9]+)?)$"));
 }
 
 //	<------- If this token is a vairable ------->
