@@ -16,7 +16,8 @@
   
 ## 目前支持的运算符
 + 目前仅支持四则运算（加，减，乘，除）与 sin, cos以及开平方运算sqrt，详情参考EasyTokenizer下TokenLookUpTable.cpp中的构造函数
-+ 如果这份代码的扩展性有我一开始以为的那么强，也许我会逐渐支持更多运算符，但是我已经八个月没有更新过了
++ 如果这份代码的扩展性有我一开始以为的那么强，也许我会逐渐支持更多运算符
++ 其实我已经八个月没有更新过了
 
 ## Reference
   Part of the codes of course CSE 687 from Dr. James Fawcett, a former Syracuse University professor who retired in May, 2019
