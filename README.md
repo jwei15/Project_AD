@@ -19,5 +19,8 @@
 + 如果这份代码的扩展性有我一开始以为的那么强，也许我会逐渐支持更多运算符
 + 其实我已经八个月没有更新过了
 
+## 潜在的问题
++ 目测NaiveParser中的BNF范式有潜在的左递归问题，而且不能完全的验证出错误的表达式
+
 ## Reference
   Part of the codes of course CSE 687 from Dr. James Fawcett, a former Syracuse University professor who retired in May, 2019
