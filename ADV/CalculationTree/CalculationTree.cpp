@@ -76,6 +76,28 @@ float CalculationTree::eval(Node* _node) {
 	else if (token == "~") return 0 - eval(_node->left);
 }
 
+float CalculationTree::diff(Node* _node) {
+	Token token = _node->_tte.first;
+	TokenType tokentype = _node->_tte.second;
+
+	if (tokentype == Variable)	return 1;
+	if (tokentype == Numeric)	return 0;
+
+	if (token == "+") return diff(_node->left) + diff(_node->right);
+	else if (token == "-") return diff(_node->left) - diff(_node->right);
+	else if (token == "*") return diff(_node->left) * eval(_node->right) + 
+		eval(_node->left) * diff(_node->right);
+
+	else if (token == "/") return (diff(_node->left)*eval(_node->right) - diff(_node->right) * eval(_node->left))
+		/ (eval(_node->right) * eval(_node->right));
+
+	else if (token == "sin") return cos(eval(_node->left)) * diff(_node->left);
+	else if (token == "cos") return sin(eval(_node->left)) * diff(_node->left);
+	else if (token == "@") return diff(_node->left);
+	else if (token == "~") return 0 - diff(_node->left);
+}
+
+
 #ifdef CALCULATIONTREE_H
 int main()
 {
