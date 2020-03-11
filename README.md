@@ -20,7 +20,7 @@
 + 其实我已经八个月没有更新过了
 
 ## 潜在的问题
-+ 目测NaiveParser中的BNF范式有潜在的左递归问题，而且不能完全的验证出错误的表达式
++ 目测NaiveParser中的BNF范式有潜在的问题，初步估计是由于在代码中重复的调用了Next()函数，目前排查了一部分
 
 ## Reference
   Part of the codes of course CSE 687 from Dr. James Fawcett, a former Syracuse University professor who retired in May, 2019
