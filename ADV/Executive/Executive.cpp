@@ -11,8 +11,8 @@ int main()
 	NaiveParser np;
 
 	std::cout << "\n\n======= Starting of demonstration of EasyTokenizer =======\n";
-	toker.setContext("sin( 132)");
-	//toker.setContext("x + 0");
+	//toker.setContext("sin(5*x+1)");
+	toker.setContext("(x");
 	toker.Tokenize();
 	np.setExpression(toker.getTokenTable());
 	toker.showTokenizeResult();
@@ -27,9 +27,9 @@ int main()
 	TokenTable tt = np.get_suffix();
 	CalculationTree* tree = new CalculationTree(tt);
 	tree->SuffixTraverse(tree->root);
-	tree->setVariable_value("x", PI);
+	tree->setVariable_value("x", PI/5);
 	std::cout << "\nExpression Result:\n";
-	std::cout << tree->eval(tree->root) << std::endl;
+	std::cout << tree->eval(tree->root) << " "<< tree->diff(tree->root)<< std::endl;
 	return 0;
 }
 
