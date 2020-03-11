@@ -19,6 +19,7 @@ void NaiveParser::Next() {
 		ValidityHelperIndex++;
 		CurrentContent = _inffix[ValidityHelperIndex].first;
 		CurrentType = _inffix[ValidityHelperIndex].second;
+		std::cout << "current content: " << CurrentContent ;
 	}
 	else {
 		CurrentContent = "#";
@@ -33,15 +34,17 @@ void NaiveParser::Next() {
 bool NaiveParser::ValidityIsGood() {
 	//Next();
 	E();
+	std::cout << ValidityHelperIndex << std::endl;
 	return (ValidityHelperFlag == true && ValidityHelperIndex == _inffix.size() - 1);
 }
 
 
 
 void NaiveParser::E(){
-	T();	//see if T() can modify the helpervalue accordingly
 	std::cout << "In E: " << CurrentContent << std::endl;
-	while (CurrentContent == "+" || CurrentContent == "-") {
+	T();	//see if T() can modify the helpervalue accordingly
+	
+	if (CurrentContent == "+" || CurrentContent == "-") {
 		Next();
 		T();
 	}
@@ -49,9 +52,11 @@ void NaiveParser::E(){
 
 
 void NaiveParser::T() {
-	F();
 	std::cout << "In T: " << CurrentContent << std::endl;
-	while (CurrentContent == "*" || CurrentContent == "/") {
+	F();
+	
+	//while (CurrentContent == "*" || CurrentContent == "/") {
+	if (CurrentContent == "*" || CurrentContent == "/") {
 		Next();
 		F();
 	}
@@ -74,9 +79,13 @@ void NaiveParser::F() {
 	else if (CurrentContent == "("){
 		Next();
 		E();
-		Next();
+		//Next();
 		if (CurrentContent == ")") 
 			Next();
+		else {
+			std::cout << " set false in (e) ";
+			ValidityHelperFlag = false;
+		}
 	}
 	//case L (E)
 	else if (CurrentType == LeftUniOpt) {
@@ -84,12 +93,17 @@ void NaiveParser::F() {
 		if (CurrentContent == "(") {
 			Next();
 			E();
-			Next();
+			//Next();
 			if (CurrentContent == ")")
 				Next();
+			else {
+				std::cout << " set false in le";
+				ValidityHelperFlag = false;
+			}
 		}
 	}
 	else {
+		std::cout << " set false ";
 		ValidityHelperFlag = false;
 	}
 }
